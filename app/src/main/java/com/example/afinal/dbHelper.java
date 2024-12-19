@@ -45,10 +45,10 @@ public class dbHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_enrollment =
             "CREATE TABLE " + table_enrollment + " (" +
                     Column_studentId + " TEXT," +
-                    Column_subject_name + " TEXT," +
+                    Column_subject_id + " TEXT," +
                     Column_credits  + " INTEGER," +
                     "FOREIGN KEY (" + Column_studentId + ") REFERENCES " + table_students + "(" + Column_studentId + ")," +
-                    "FOREIGN KEY (" + Column_subject_name + ") REFERENCES " + table_subjects + "(" + Column_subject_name + ")" +
+                    "FOREIGN KEY (" + Column_subject_id + ") REFERENCES " + table_subjects + "(" + Column_subject_id + ")" +
                     ")";
 
     public dbHelper(Context context){
@@ -98,7 +98,7 @@ public class dbHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         SQLiteDatabase db;
         contentValues.put(Column_studentId,enrollment.getStudentId());
-        contentValues.put(Column_subject_name,enrollment.getSubjectName());
+        contentValues.put(Column_subject_id,enrollment.getSubjectId());
         contentValues.put(Column_credits,enrollment.getCredits());
         db = this.getWritableDatabase();
         db.insert(table_enrollment,null,contentValues);
